@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+{% if user.is_authenticated %}
+ <h3> <font color ="sky blue">What's up, {{ user.email }}?</font></h3>
+  <p><button onclick = "location.href = '{% url 'logout' %}'">logout here<br>buddy!</button>
+  </p>
+  	<button onclick = "location.href = '{% url 'password_reset' %}'">Reset Password</button>
+
+{% else %}
+  <h3><font color = "red">You are not logged in</font></h3>
+
+  <button onclick = "location.href= '{% url 'login' %}' ">Login</button>
+  <br>
+  <button onclick = "location.href = '{% url 'signup' %}'">Sign-Up</button>
+{% endif %}
+{% endblock %}
